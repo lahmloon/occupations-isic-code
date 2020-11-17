@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">occupations-isic-code</string>
+    <string name="search_hint">Enter occupation id to search</string>
+</resources>
