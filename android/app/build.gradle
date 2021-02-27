@@ -79,5 +79,8 @@ dependencies {
     implementation 'com.neovisionaries:nv-i18n:1.27'
 
     // Occupations Isic code module
-    implementation project(path: ':occupations-isic-code-sdk')
+//    implementation project(path: ':occupations-isic-code-sdk')
+
+    // Occupations Isic code in on jitpack
+    implementation 'com.github.lahmloon:occupations-isic-code:1.0.0'
 }
