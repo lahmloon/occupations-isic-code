@@ -1,2 +1,3 @@
+include ':occupations-isic-code-sdk'
 include ':app'
 rootProject.name = "occupations-isic-code"

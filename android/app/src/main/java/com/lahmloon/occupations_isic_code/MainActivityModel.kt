@@ -3,9 +3,8 @@ package com.lahmloon.occupations_isic_code
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import com.lahmloon.occupations_isic_code.occupations.OccupationsDb
-import com.lahmloon.occupations_isic_code.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.OccupationsSdk
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -39,7 +38,7 @@ class MainActivityModel(application: Application) : AndroidViewModel(application
             .switchMap {
                 Observable
                     .fromCallable {
-                        OccupationsSdk.instance(this).searchOccupationsByIsicCode("$it%", 30)
+                        OccupationsSdk.instance(this.getApplication()).searchOccupationsByIsicCode("$it%", 30)
                     }
                     .subscribeOn(Schedulers.computation())
             }

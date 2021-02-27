@@ -1,8 +1,8 @@
-package com.lahmloon.occupations_isic_code.occupations.dao
+package com.lahmloon.occupations_isic_code_sdk.occupations.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.lahmloon.occupations_isic_code.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
 
 /**
  * Occupations DAO

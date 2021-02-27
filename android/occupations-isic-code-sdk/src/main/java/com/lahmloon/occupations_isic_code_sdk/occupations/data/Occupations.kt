@@ -1,4 +1,4 @@
-package com.lahmloon.occupations_isic_code.occupations.data
+package com.lahmloon.occupations_isic_code_sdk.occupations.data
 
 import androidx.room.*
 

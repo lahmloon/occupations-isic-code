@@ -9,7 +9,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lahmloon.occupations_isic_code.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
 import com.lahmloon.occupations_isic_code.databinding.ActivityMainBinding
 import com.lahmloon.occupations_isic_code.view.OccupationListAdapter
 

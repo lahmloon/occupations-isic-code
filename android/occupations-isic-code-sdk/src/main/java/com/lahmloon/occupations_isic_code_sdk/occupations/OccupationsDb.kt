@@ -1,10 +1,10 @@
-package com.lahmloon.occupations_isic_code.occupations
+package com.lahmloon.occupations_isic_code_sdk.occupations
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.lahmloon.occupations_isic_code.BuildConfig
-import com.lahmloon.occupations_isic_code.occupations.dao.OccupationsDao
-import com.lahmloon.occupations_isic_code.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.occupations.dao.OccupationsDao
+import com.lahmloon.occupations_isic_code_sdk.BuildConfig
+import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
 
 /**
  * Occupations database definition

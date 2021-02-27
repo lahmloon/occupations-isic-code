@@ -1,16 +1,16 @@
-package com.lahmloon.occupations_isic_code
+package com.lahmloon.occupations_isic_code_sdk
 
 import android.content.Context
 import androidx.room.Room
-import com.lahmloon.occupations_isic_code.occupations.OccupationsDb
-import com.lahmloon.occupations_isic_code.occupations.data.Occupations
+import com.lahmloon.occupations_isic_code_sdk.occupations.OccupationsDb
+import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
 
 /**
  * Performs occupation search
  */
 class OccupationsSdk {
-    constructor(context: MainActivityModel) {
-        init(context.getApplication())
+    constructor(context: Context) {
+        init(context)
     }
 
     companion object {
@@ -19,7 +19,7 @@ class OccupationsSdk {
         private var instance: OccupationsSdk? = null
 
         @JvmStatic
-        fun instance(context: MainActivityModel): OccupationsSdk {
+        fun instance(context: Context): OccupationsSdk {
             if (instance == null) {
                 instance = OccupationsSdk(context)
             }
