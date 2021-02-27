@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 /**
  * Performs occupation search
  */
-class MainActivityModel(application: Application): AndroidViewModel(application) {
+class MainActivityModel(application: Application) : AndroidViewModel(application) {
     private var subscription: Disposable
     private val searchSubject = PublishSubject.create<String>()
 
@@ -33,26 +33,14 @@ class MainActivityModel(application: Application): AndroidViewModel(application)
     val occupations = MutableLiveData<List<Occupations>>()
 
     init {
-        // Database engine
-        val db = Room
-            .databaseBuilder(getApplication(), OccupationsDb::class.java, "occupations.db")
-            // Set asset-file to copy database from
-            .createFromAsset("databases/occupations.db")
-            // How the database gets copied over:
-            // 1. Every time the import script is run - the database version increases in BuildConfig
-            // 2. The local database (if already there) is verified to have the same version
-            // 3. As we have a version greater the migration is performed
-            // 4. We don't supply any migration (fallbackToDestructiveMigration)
-            //    so the file gets copied over
-            .fallbackToDestructiveMigration()
-            .build()
-
         subscription = searchSubject
             .debounce(300L, TimeUnit.MILLISECONDS, Schedulers.computation())
             .filter { it.isNotBlank() }
             .switchMap {
                 Observable
-                    .fromCallable { db.occupationsDao().searchByString("$it%", 30) }
+                    .fromCallable {
+                        OccupationsSdk.instance(this).searchOccupationsByIsicCode("$it%", 30)
+                    }
                     .subscribeOn(Schedulers.computation())
             }
             .observeOn(AndroidSchedulers.mainThread())
