@@ -1,6 +1,10 @@
 package com.lahmloon.occupations_isic_code_sdk
 
+import android.content.ContentProvider
+import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
+import android.net.Uri
 import androidx.room.Room
 import com.lahmloon.occupations_isic_code_sdk.occupations.OccupationsDb
 import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
@@ -9,19 +13,15 @@ import com.lahmloon.occupations_isic_code_sdk.occupations.data.Occupations
  * Performs occupation search
  */
 class OccupationsSdk {
-    constructor(context: Context) {
-        init(context)
-    }
-
     companion object {
 
         private lateinit var db: OccupationsDb
         private var instance: OccupationsSdk? = null
 
         @JvmStatic
-        fun instance(context: Context): OccupationsSdk {
+        fun instance(): OccupationsSdk {
             if (instance == null) {
-                instance = OccupationsSdk(context)
+                instance = OccupationsSdk()
             }
             return instance!!
         }
@@ -45,5 +45,43 @@ class OccupationsSdk {
 
     fun searchOccupationsByIsicCode(postcode: String, maxCount: Int): List<Occupations> {
         return db.occupationsDao().searchOccupationsByIsicCode(postcode, maxCount)
+    }
+
+    class LibProvider : ContentProvider() {
+        override fun insert(uri: Uri, values: ContentValues?): Uri? {
+            return null
+        }
+
+        override fun query(
+            uri: Uri,
+            projection: Array<out String>?,
+            selection: String?,
+            selectionArgs: Array<out String>?,
+            sortOrder: String?
+        ): Cursor? {
+            return null
+        }
+
+        override fun onCreate(): Boolean {
+            init(context!!)
+            return true
+        }
+
+        override fun update(
+            uri: Uri,
+            values: ContentValues?,
+            selection: String?,
+            selectionArgs: Array<out String>?
+        ): Int {
+            return 0
+        }
+
+        override fun delete(uri: Uri, selection: String?, selectionArgs: Array<out String>?): Int {
+            return 0
+        }
+
+        override fun getType(uri: Uri): String? {
+            return null
+        }
     }
 }

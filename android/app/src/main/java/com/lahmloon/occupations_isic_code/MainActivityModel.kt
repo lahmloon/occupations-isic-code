@@ -38,7 +38,7 @@ class MainActivityModel(application: Application) : AndroidViewModel(application
             .switchMap {
                 Observable
                     .fromCallable {
-                        OccupationsSdk.instance(this.getApplication()).searchOccupationsByIsicCode("$it%", 30)
+                        OccupationsSdk.instance().searchOccupationsByIsicCode("$it%", 30)
                     }
                     .subscribeOn(Schedulers.computation())
             }
