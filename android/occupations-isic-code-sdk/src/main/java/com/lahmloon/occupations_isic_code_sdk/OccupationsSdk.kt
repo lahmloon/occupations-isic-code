@@ -47,7 +47,7 @@ class OccupationsSdk {
         return db.occupationsDao().searchOccupationsByIsicCode(postcode, maxCount)
     }
 
-    class LibProvider : ContentProvider() {
+    class Provider : ContentProvider() {
         override fun insert(uri: Uri, values: ContentValues?): Uri? {
             return null
         }
